@@ -41,6 +41,21 @@ kotlin {
 
 }
 
+group = "com.github.felixhennerich"
+version = "1.0.11"
+
+publishing {
+    repositories {
+        maven {
+            url = uri("https://maven.pkg.github.com/FelixHennerich/ImageExtension")
+            credentials {
+                username = "felixhennerich"
+                password = "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"
+            }
+        }
+    }
+}
+
 android {
     namespace = "de.hennerich.imageextension"
     compileSdk = 33
@@ -48,6 +63,3 @@ android {
         minSdk = 24
     }
 }
-
-group = "com.github.imageextension"
-version = "1.0.10"
