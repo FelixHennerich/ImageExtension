@@ -38,6 +38,7 @@ kotlin {
             }
         }
     }
+
 }
 
 android {
@@ -48,32 +49,5 @@ android {
     }
 }
 
-afterEvaluate{
-    publishing {
-        publications {
-            val artifactid = "image-extension"
-            val libversion = "1.0.9"
-            register<MavenPublication>("gpr"){
-                from(components.findByName("commonMain"))
-
-                groupId = "com.github.felixhennerich"
-                artifactId = artifactid
-                version = libversion
-            }
-            register<MavenPublication>("gpr2"){
-                from(components.findByName("androidMain"))
-
-                groupId = "com.github.felixhennerich"
-                artifactId = artifactid
-                version = libversion
-            }
-            register<MavenPublication>("gpr3"){
-                from(components.findByName("iosMain"))
-
-                groupId = "com.github.felixhennerich"
-                artifactId = artifactid
-                version = libversion
-            }
-        }
-    }
-}
+group = "com.github.imageextension"
+version = "1.0.10"
