@@ -9,15 +9,13 @@ kotlin {
     targetHierarchy.default()
 
     android {
-        publishLibraryVariants("release", "debug")
-        publishLibraryVariantsGroupedByFlavor = true
         compilations.all {
             kotlinOptions {
                 jvmTarget = "1.8"
             }
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -40,29 +38,42 @@ kotlin {
             }
         }
     }
-
 }
-
-group = "com.github.felixhennerich"
-version = "1.0.12"
-
-publishing {
-    repositories {
-        maven {
-            setUrl("https://maven.pkg.github.com/FelixHennerich/ImageExtension")
-            credentials {
-                username = "felixhennerich"
-                password = "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"
-            }
-        }
-    }
-}
-
 
 android {
     namespace = "de.hennerich.imageextension"
     compileSdk = 33
     defaultConfig {
         minSdk = 24
+    }
+}
+
+afterEvaluate{
+    publishing {
+        publications {
+            val artifactid = "image-extension"
+            val libversion = "1.0.13"
+            create<MavenPublication>("gpr"){
+                from(components.findByName("iosMain"))
+
+                groupId = "com.github.felixhennerich"
+                artifactId = artifactid
+                version = libversion
+            }
+            create<MavenPublication>("gpr1"){
+                from(components.findByName("commonMain"))
+
+                groupId = "com.github.felixhennerich"
+                artifactId = artifactid
+                version = libversion
+            }
+            create<MavenPublication>("gpr2"){
+                from(components.findByName("androidMain"))
+
+                groupId = "com.github.felixhennerich"
+                artifactId = artifactid
+                version = libversion
+            }
+        }
     }
 }
