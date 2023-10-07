@@ -9,6 +9,8 @@ kotlin {
     targetHierarchy.default()
 
     android {
+        publishLibraryVariants("release", "debug")
+        publishLibraryVariantsGroupedByFlavor = true
         compilations.all {
             kotlinOptions {
                 jvmTarget = "1.8"
@@ -42,12 +44,12 @@ kotlin {
 }
 
 group = "com.github.felixhennerich"
-version = "1.0.11"
+version = "1.0.12"
 
 publishing {
     repositories {
         maven {
-            url = uri("https://maven.pkg.github.com/FelixHennerich/ImageExtension")
+            setUrl("https://maven.pkg.github.com/FelixHennerich/ImageExtension")
             credentials {
                 username = "felixhennerich"
                 password = "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"
@@ -55,6 +57,7 @@ publishing {
         }
     }
 }
+
 
 android {
     namespace = "de.hennerich.imageextension"
