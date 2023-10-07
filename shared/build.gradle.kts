@@ -52,23 +52,9 @@ afterEvaluate{
     publishing {
         publications {
             val artifactid = "image-extension"
-            val libversion = "1.0.5"
+            val libversion = "1.0.6"
             register<MavenPublication>("gpr"){
-                from(components.findByName("iosMain"))
-
-                groupId = "com.github.felixhennerich"
-                artifactId = artifactid
-                version = libversion
-            }
-            register<MavenPublication>("gpr1"){
-                from(components.findByName("kotlin"))
-
-                groupId = "com.github.felixhennerich"
-                artifactId = artifactid
-                version = libversion
-            }
-            register<MavenPublication>("gpr2"){
-                from(components.findByName("androidMain"))
+                from(components.findByName("src"))
 
                 groupId = "com.github.felixhennerich"
                 artifactId = artifactid
