@@ -55,7 +55,7 @@ afterEvaluate{
                 from(components["kotlin"])
                 groupId = "com.github.felixhennerich"
                 artifactId = "image-extension"
-                version = "1.0.1"
+                version = "1.0.4"
             }
         }
     }
