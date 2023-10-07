@@ -52,9 +52,9 @@ afterEvaluate{
     publishing {
         publications {
             val artifactid = "image-extension"
-            val libversion = "1.0.6"
+            val libversion = "1.0.7"
             register<MavenPublication>("gpr"){
-                from(components.findByName("src"))
+                from(components.findByName("shared"))
 
                 groupId = "com.github.felixhennerich"
                 artifactId = artifactid
