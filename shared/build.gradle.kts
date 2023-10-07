@@ -47,20 +47,16 @@ android {
         minSdk = 24
     }
 }
-publishing {
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/FelixHennerich/ImageExtension")
-            credentials{
-                username = "felixhennerich"
-                password = "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"
+
+afterEvaluate{
+    publishing {
+        publications {
+            register<MavenPublication>("gpr"){
+                from(components["kotlin"])
+                groupId = "com.github.felixhennerich"
+                artifactId = "image-extension"
+                version = "1.0.1"
             }
-        }
-    }
-    publications {
-        register<MavenPublication>("gpr") {
-            from(components["kotlin"])
         }
     }
 }
